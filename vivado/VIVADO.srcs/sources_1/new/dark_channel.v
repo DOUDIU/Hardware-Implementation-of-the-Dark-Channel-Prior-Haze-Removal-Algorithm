@@ -14,15 +14,16 @@ module dark_channel(
     );
 
 
-wire            src_min_frame_vsync ;
-wire            src_min_frame_href  ; 
-wire            src_min_frame_clken ;
-wire    [7 :0]  src_min_img         ; 
+wire            src_min_frame_vsync         ;
+wire            src_min_frame_href          ; 
+wire            src_min_frame_clken         ;
+wire    [7 :0]  src_min_img                 ; 
 
-wire            src_block_min_frame_vsync ;
-wire            src_block_min_frame_href  ; 
-wire            src_block_min_frame_clken ;
-wire    [7 :0]  src_block_min_img         ; 
+wire            src_block_min_frame_vsync   ;
+wire            src_block_min_frame_href    ; 
+wire            src_block_min_frame_clken   ;
+wire    [7 :0]  src_block_min_img           ; 
+
 
 src_min u_src_min(
         .clk                (clk                        ),              
@@ -37,7 +38,7 @@ src_min u_src_min(
         .post_frame_href    (src_min_frame_href         ),  
         .post_frame_clken   (src_min_frame_clken        ), 
         .post_img           (src_min_img                )
-    );
+);
 
 search_block_min u_search_block_min(
         .clk                 (clk                       ),
@@ -55,10 +56,11 @@ search_block_min u_search_block_min(
 );
 
 
-assign  post_frame_vsync    =   src_block_min_frame_vsync;
-assign  post_frame_href     =   src_block_min_frame_href ;
-assign  post_frame_clken    =   src_block_min_frame_clken;
-assign  post_img            =   src_block_min_img        ;
+
+assign  post_frame_vsync    =   src_block_min_frame_vsync ;
+assign  post_frame_href     =   src_block_min_frame_href  ;
+assign  post_frame_clken    =   src_block_min_frame_clken ;
+assign  post_img            =   src_block_min_img         ;
 
 
 

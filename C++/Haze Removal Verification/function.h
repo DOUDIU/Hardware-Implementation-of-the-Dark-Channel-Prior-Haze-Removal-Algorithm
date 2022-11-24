@@ -63,6 +63,8 @@ Mat dark_channel(Mat src)
 	Mat min_mat(src.size(), CV_8UC1, Scalar(0)), min_mat_expansion;
 	Mat dark_channel_mat(src.size(), CV_8UC1, Scalar(0));
 	split(src, rgbChannels);
+	int max_value = 0;	//test
+	int min_value = 255;//test
 	for (int i = 0; i < src.rows; i++)
 	{
 		for (int j = 0; j < src.cols; j++)
@@ -77,6 +79,13 @@ Mat dark_channel(Mat src)
 			min_val = std::min(min_val, val_3);
 			min_mat.at<uchar>(i, j) = min_val;
 
+			
+			max_value = std::max(max_value, val_1);//test
+			max_value = std::max(max_value, val_2);//test
+			max_value = std::max(max_value, val_3);//test
+			min_value = std::min(min_value, val_1);//test
+			min_value = std::min(min_value, val_2);//test
+			min_value = std::min(min_value, val_3);//test
 		}
 	}
 	copyMakeBorder(min_mat, min_mat_expansion, border, border, border, border, BORDER_REPLICATE);
@@ -137,10 +146,12 @@ int calculate_A(Mat src, Mat dark_channel_mat)
 		val_1 = rgbChannels[0].at<uchar>(tmp.y, tmp.x);
 		val_2 = rgbChannels[1].at<uchar>(tmp.y, tmp.x);
 		val_3 = rgbChannels[2].at<uchar>(tmp.y, tmp.x);
-		max_val = std::max(val_1, val_2);
+		max_val = std::max(max_val, val_1);
+		max_val = std::max(max_val, val_2);
 		max_val = std::max(max_val, val_3);
 	}
 	return max_val;
+	//return 255;
 }
 
 
@@ -149,10 +160,27 @@ Mat calculate_tx(Mat& src, int A, Mat& dark_channel_mat)
 	Mat dst;//是用来计算t(x)
 	Mat tx;
 	float dark_channel_num;
-	dark_channel_num = A / 255.0;
-	dark_channel_mat.convertTo(dst, CV_32FC3, 1 / 255.0);//用来计算t(x)
+
+	//原代码，感觉这个除255没什么大意义
+	//dark_channel_num = A / 255.0;
+	//dark_channel_mat.convertTo(dst, CV_32FC3, 1 / 255.0);//用来计算t(x)
+	//my revise version
+	dark_channel_num = A;
+	dark_channel_mat.convertTo(dst, CV_32FC3, 1);//用来计算t(x)
+
 	dst = dst / dark_channel_num;
 	tx = 1 - 0.95 * dst;//最终的tx图
+
+
+	//test
+	//for (int i = 0; i < 1; i++)
+	//{
+	//	for (int j = 0; j < 10; j++)
+	//	{
+	//		std::cout << tx.at<float>(i, j) * 256 << " ";
+	//	}
+	//	std::cout << std::endl;
+	//}
 
 	return tx;
 }

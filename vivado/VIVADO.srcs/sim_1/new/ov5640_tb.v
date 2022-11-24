@@ -318,7 +318,7 @@ VIP_RGB888_YCbCr444	u_VIP_RGB888_YCbCr444
 wire        		haze_remove_vsync		  ;
 wire        		haze_remove_hsync		  ;
 wire        		haze_remove_de   		  ;
-wire        [7:0]	img_haze_remove		  	  ;
+wire        [23:0]	img_haze_remove		  	  ;
 
 
 haze_remove_top u_haze_remove_top(
@@ -509,12 +509,12 @@ wire        [7:0]      PIC3_vip_out_img_R;
 wire        [7:0]      PIC3_vip_out_img_G;
 wire        [7:0]      PIC3_vip_out_img_B;
 
- assign PIC3_vip_out_frame_vsync 	= haze_remove_vsync	 ;		   
- assign PIC3_vip_out_frame_href  	= haze_remove_hsync	 ;		   
- assign PIC3_vip_out_frame_clken 	= haze_remove_de   	 ;		 
- assign PIC3_vip_out_img_R 			= img_haze_remove    ;		
- assign PIC3_vip_out_img_G 			= img_haze_remove    ;
- assign PIC3_vip_out_img_B 			= img_haze_remove	 ;
+ assign PIC3_vip_out_frame_vsync 	= haze_remove_vsync	            ;		   
+ assign PIC3_vip_out_frame_href  	= haze_remove_hsync	            ;		   
+ assign PIC3_vip_out_frame_clken 	= haze_remove_de   	            ;		 
+ assign PIC3_vip_out_img_R 			= img_haze_remove[23 : 16]      ;		
+ assign PIC3_vip_out_img_G 			= img_haze_remove[15 :  8]      ;
+ assign PIC3_vip_out_img_B 			= img_haze_remove[ 7 :  0] 	    ;
 reg [31:0]  PIC3_vip_cnt;
 reg         PIC3_vip_vsync_r;    //寄存VIP输出的场同步 
 reg         PIC3_vip_out_en;     //寄存VIP处理图像的使能信号，仅维持一帧的时间

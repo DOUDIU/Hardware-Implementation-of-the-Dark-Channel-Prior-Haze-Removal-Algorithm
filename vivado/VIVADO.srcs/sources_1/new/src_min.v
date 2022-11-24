@@ -1,11 +1,11 @@
 module src_min(
-        input           clk,             //cmos 像素时钟
-        input           rst_n,  
+        input           clk                 ,
+        input           rst_n               ,  
         //处理前数据
-        input           per_frame_vsync, 
-        input           per_frame_href,  
-        input           per_frame_clken, 
-        input   [23:0]  per_img,       
+        input           per_frame_vsync     , 
+        input           per_frame_href      ,  
+        input           per_frame_clken     , 
+        input   [23:0]  per_img             ,       
         //处理后的数据
         output          post_frame_vsync    , 
         output          post_frame_href     ,  
