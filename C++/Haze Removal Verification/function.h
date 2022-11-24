@@ -58,7 +58,7 @@ Mat guidedfilter(Mat& srcImage, Mat& srcClone, int r, double eps)
 //计算暗通道图像矩阵，针对三通道彩色图像
 Mat dark_channel(Mat src)
 {
-	int border = 2;
+	int border = 1;
 	std::vector<cv::Mat> rgbChannels(3);
 	Mat min_mat(src.size(), CV_8UC1, Scalar(0)), min_mat_expansion;
 	Mat dark_channel_mat(src.size(), CV_8UC1, Scalar(0));
