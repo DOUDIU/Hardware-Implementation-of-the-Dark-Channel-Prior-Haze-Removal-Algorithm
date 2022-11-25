@@ -540,9 +540,9 @@ always@(posedge clk or negedge rst_n)begin
    else if(PIC3_vip_out_en) begin
         if(PIC3_vip_out_frame_href & PIC3_vip_out_frame_clken) begin
             PIC3_vip_cnt <=  PIC3_vip_cnt + 3;
-            vip_pixel_data_3[PIC3_vip_cnt+0] <= PIC3_vip_out_img_R;
+            vip_pixel_data_3[PIC3_vip_cnt+0] <= PIC3_vip_out_img_B;
             vip_pixel_data_3[PIC3_vip_cnt+1] <= PIC3_vip_out_img_G;
-            vip_pixel_data_3[PIC3_vip_cnt+2] <= PIC3_vip_out_img_B;
+            vip_pixel_data_3[PIC3_vip_cnt+2] <= PIC3_vip_out_img_R;
         end
    end
 end
