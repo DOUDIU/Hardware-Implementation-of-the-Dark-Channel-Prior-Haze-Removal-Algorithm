@@ -4,3 +4,5 @@ C++/Haze Removal Verification/*
 
 vivado/*
 !vivado/VIVADO.srcs
+
+.gitignore
