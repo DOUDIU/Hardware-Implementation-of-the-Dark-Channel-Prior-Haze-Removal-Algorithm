@@ -7,64 +7,55 @@
 #include<iostream>
 #include<map>
 
+
 using namespace std;
 using namespace cv;
-//导向滤波，用来优化t(x)，针对单通道
-Mat guidedfilter(Mat& srcImage, Mat& srcClone, int r, double eps)
-{
+
+
+Mat guidedfilter_revise(Mat& GuideImage, Mat& srcImage, int r, double eps) {
 	//转换源图像信息
-	srcImage.convertTo(srcImage, CV_32FC1, 1 / 255.0);
-	srcClone.convertTo(srcClone, CV_32FC1);
-	int nRows = srcImage.rows;
-	int nCols = srcImage.cols;
-	Mat boxResult;
-	//步骤一：计算均值
-	boxFilter(Mat::ones(nRows, nCols, srcImage.type()),
-		boxResult, CV_32FC1, Size(r, r));
-	//生成导向均值mean_I
+	GuideImage.convertTo(GuideImage, CV_32FC1, 1 / 255.0);
+	srcImage.convertTo(srcImage, CV_32FC1);
+	
+	//生成导向均值mean_G
+	Mat mean_G;
+	boxFilter(GuideImage, mean_G, CV_32FC1, Size(r, r));
+	//生成原始均值mean_I
 	Mat mean_I;
 	boxFilter(srcImage, mean_I, CV_32FC1, Size(r, r));
-	//生成原始均值mean_p
-	Mat mean_p;
-	boxFilter(srcClone, mean_p, CV_32FC1, Size(r, r));
-	//生成互相关均值mean_Ip
-	Mat mean_Ip;
-	boxFilter(srcImage.mul(srcClone), mean_Ip,
+	//生成互相关均值mean_GI
+	Mat mean_GI;
+	boxFilter(GuideImage.mul(srcImage), mean_GI,
 		CV_32FC1, Size(r, r));
-	Mat cov_Ip = mean_Ip - mean_I.mul(mean_p);
-	//生成自相关均值mean_II
-	Mat mean_II;
-	//应用盒滤波器计算相关的值
-	boxFilter(srcImage.mul(srcImage), mean_II,
+	//生成自相关均值mean_GG
+	Mat mean_GG;
+	boxFilter(GuideImage.mul(GuideImage), mean_GG,
 		CV_32FC1, Size(r, r));
-	//步骤二：计算相关系数
-	Mat var_I = mean_II - mean_I.mul(mean_I);
-	Mat var_Ip = mean_Ip - mean_I.mul(mean_p);
-	//步骤三：计算参数系数a,b
-	Mat a = cov_Ip / (var_I + eps);
-	Mat b = mean_p - a.mul(mean_I);
-	//步骤四：计算系数a\b的均值
+
+	//计算方差、协方差
+	Mat cov_GI = mean_GI - mean_G.mul(mean_I);
+	Mat var_G  = mean_GG - mean_G.mul(mean_G);
+	//计算参数系数a,b
+	Mat a = cov_GI / (var_G + eps);
+	Mat b = mean_I - a.mul(mean_G);
+	//计算系数a、b的均值
 	Mat mean_a;
 	boxFilter(a, mean_a, CV_32FC1, Size(r, r));
-	mean_a = mean_a / boxResult;
 	Mat mean_b;
 	boxFilter(b, mean_b, CV_32FC1, Size(r, r));
-	mean_b = mean_b / boxResult;
-	//步骤五：生成输出矩阵
-	Mat resultMat = mean_a.mul(srcImage) + mean_b;
+	//生成输出矩阵
+	Mat resultMat = mean_a.mul(GuideImage) + mean_b;
 	return resultMat;
 }
 
+
 //计算暗通道图像矩阵，针对三通道彩色图像
-Mat dark_channel(Mat src)
+Mat dark_channel(Mat src, int border)
 {
-	int border = 1;
 	std::vector<cv::Mat> rgbChannels(3);
 	Mat min_mat(src.size(), CV_8UC1, Scalar(0)), min_mat_expansion;
 	Mat dark_channel_mat(src.size(), CV_8UC1, Scalar(0));
 	split(src, rgbChannels);
-	int max_value = 0;	//test
-	int min_value = 255;//test
 	for (int i = 0; i < src.rows; i++)
 	{
 		for (int j = 0; j < src.cols; j++)
@@ -79,13 +70,6 @@ Mat dark_channel(Mat src)
 			min_val = std::min(min_val, val_3);
 			min_mat.at<uchar>(i, j) = min_val;
 
-			
-			max_value = std::max(max_value, val_1);//test
-			max_value = std::max(max_value, val_2);//test
-			max_value = std::max(max_value, val_3);//test
-			min_value = std::min(min_value, val_1);//test
-			min_value = std::min(min_value, val_2);//test
-			min_value = std::min(min_value, val_3);//test
 		}
 	}
 	copyMakeBorder(min_mat, min_mat_expansion, border, border, border, border, BORDER_REPLICATE);
@@ -109,7 +93,6 @@ Mat dark_channel(Mat src)
 		}
 	}
 	return dark_channel_mat;
-	//return min_mat;
 }
 
 
@@ -121,7 +104,6 @@ int calculate_A(Mat src, Mat dark_channel_mat)
 	map<int, Point>::iterator iter;
 	vector<Point> cord;
 	int max_val = 0;
-	//cout << dark_channel_mat.rows << " " << dark_channel_mat.cols << endl;
 	for (int i = 0; i < dark_channel_mat.rows; i++)
 	{
 		for (int j = 0; j < dark_channel_mat.cols; j++)
@@ -136,7 +118,6 @@ int calculate_A(Mat src, Mat dark_channel_mat)
 
 	for (iter = pair_data.begin(); iter != pair_data.end(); iter++)
 	{
-		//cout << iter->first << endl;
 		cord.push_back(iter->second);
 	}
 	for (int m = 0; m < cord.size(); m++)
@@ -151,7 +132,6 @@ int calculate_A(Mat src, Mat dark_channel_mat)
 		max_val = std::max(max_val, val_3);
 	}
 	return max_val;
-	//return 255;
 }
 
 
@@ -161,26 +141,11 @@ Mat calculate_tx(Mat& src, int A, Mat& dark_channel_mat)
 	Mat tx;
 	float dark_channel_num;
 
-	//原代码，感觉这个除255没什么大意义
-	//dark_channel_num = A / 255.0;
-	//dark_channel_mat.convertTo(dst, CV_32FC3, 1 / 255.0);//用来计算t(x)
-	//my revise version
 	dark_channel_num = A;
 	dark_channel_mat.convertTo(dst, CV_32FC3, 1);//用来计算t(x)
 
 	dst = dst / dark_channel_num;
 	tx = 1 - 0.95 * dst;//最终的tx图
-
-
-	//test
-	//for (int i = 0; i < 1; i++)
-	//{
-	//	for (int j = 0; j < 10; j++)
-	//	{
-	//		std::cout << tx.at<float>(i, j) * 256 << " ";
-	//	}
-	//	std::cout << std::endl;
-	//}
 
 	return tx;
 }
