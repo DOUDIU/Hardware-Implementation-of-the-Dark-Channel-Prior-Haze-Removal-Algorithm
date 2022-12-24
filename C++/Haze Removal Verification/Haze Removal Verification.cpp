@@ -19,7 +19,7 @@ int main()
 	int A = calculate_A(src, dark_channel_mat);
 	Mat tx = calculate_tx(src, A, dark_channel_mat);
 
-	cvtColor(src, dst, CV_BGR2GRAY);
+	cvtColor(src, dst, COLOR_RGB2GRAY);
 	Mat tx_ = guidedfilter_revise(dst, tx, 5, 0.001);//导向滤波后的tx，dst为引导图像
 
 	Mat haze_removal_image = haze_removal_img(src, A, tx_);
