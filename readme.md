@@ -26,7 +26,7 @@
 - ***matlab***
 
 ​	其中**C++**文件夹中存放着基于opencv验证的暗通道先验去雾算法的验证方案，**matlab**文件夹存放着按通道先验去雾处理后图像比较暗的通过提高亮度以使图片看起来正常点的代码。
-ppt演示文档：
+ppt演示文档：https://docs.google.com/presentation/d/1hftrReSJX6RB1ljNpfOpNf5uYBZNhLuOinfR8WJm7VA/edit?usp=sharing
 
 如果有问题欢迎提交，如果有帮助的话，不要忘记点赞关注哦！
 
