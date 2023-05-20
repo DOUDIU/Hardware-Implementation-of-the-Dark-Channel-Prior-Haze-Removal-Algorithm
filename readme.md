@@ -1,6 +1,6 @@
 # 基于暗通道先验去雾算法的FPGA实现
 
-### Introduction
+## Introduction
 
 ​	C代码中有加导向滤波，实际上效果会好很多，但是FPGA实现的时候没有加上去，目前实现了图像的去雾，图片的A值是用上一帧的A值作为现有帧的A值，实际上应用的话应该不会有太大影响。
 
@@ -16,11 +16,11 @@
 
 - ***RTL***
 
-​	其中**pic**文件夹存放着用来仿真及结果存储的仿真图像，**QuestaSim**文件夹中存放着Modelsim仿真的工程（仅仅是Modelsim的工程文件），**RTL**文件夹为整个工程源码及仿真源码。
+​	其中**pic**文件夹存放着用来仿真及结果存储的仿真图像，**QuestaSim**文件夹中存放着Modelsim仿真的工程（为空），**RTL**文件夹为整个工程源码及仿真源码，请把modelsim工程创建到Questasim文件夹，添加RTL文件下所有源文件，选择顶层***image_process***进行仿真，工程需仿真***14ms***才能出现结果。
 
 如果有问题欢迎提交，如果有帮助的话，不要忘记点赞关注哦！
 
-
+## 效果展示
 
 ![duck_fog](pic/duck_fog.bmp)
 
@@ -31,6 +31,16 @@
 
 
 ## Reference
+
+何凯明个人主页，论文+SLIDE
+
+https://kaiminghe.github.io/
+
+![KaiMingHe](pic/reademe_pic/KaiMingHe.png)
+
+> 1.Single Image Haze Removal Using Dark Channel Prior
+>
+> 2.Guided Image Filtering
 
 相关介绍：
 
@@ -46,7 +56,7 @@ https://zhuanlan.zhihu.com/p/438206777
 
 [(34条消息) 导向滤波(Guided Filter)公式详解_lsflll的博客-CSDN博客_导向滤波](https://blog.csdn.net/weixin_43194305/article/details/88959183)
 
-### Tips：
+## Tips：
 
 ​	本工程中的仿真文件中读取bmp与保存bmp用的读取函数都是使用***相对路径***，如果不想自己重新切换下路径的话，上述三个文件夹及Vivado工程创建路径需与此教程一致。
 

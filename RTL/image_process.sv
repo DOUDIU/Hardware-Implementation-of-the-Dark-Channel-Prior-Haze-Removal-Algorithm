@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
 
 //使用BMP图片格式仿真VIP视频图像处理算法
-module bmp_sim_VIP_tb();
+module image_process();
  
 integer iBmpFileId;                 //输入BMP图片
 
