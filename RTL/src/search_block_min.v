@@ -2,10 +2,10 @@ module search_block_min(
         input           clk                 ,
         input           rst_n               ,  
         //处理前数据
-        input           per_frame_vsync     , 
-        input           per_frame_href      ,  
-        input           per_frame_clken     , 
-        input   [23:0]  per_img             ,       
+        input           pre_frame_vsync     , 
+        input           pre_frame_href      ,  
+        input           pre_frame_clken     , 
+        input   [23:0]  pre_img             ,       
         //处理后的数据
         output          post_frame_vsync    , 
         output          post_frame_href     ,  
@@ -58,10 +58,10 @@ matrix_generate_3x3 #(
     .clk                    (clk                    ),  
     .rst_n                  (rst_n                  ),
 
-    .per_frame_vsync        (per_frame_vsync        ),
-    .per_frame_href         (per_frame_href         ),
-    .per_frame_clken        (per_frame_clken        ),
-    .per_img_y              (per_img                ),
+    .pre_frame_vsync        (pre_frame_vsync        ),
+    .pre_frame_href         (pre_frame_href         ),
+    .pre_frame_clken        (pre_frame_clken        ),
+    .pre_img_y              (pre_img                ),
     
     .matrix_frame_vsync     (matrix_frame_vsync     ),
     .matrix_frame_href      (matrix_frame_href      ),

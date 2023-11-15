@@ -6,10 +6,10 @@ module  matrix_generate_3x3#(
     input                           clk,  
     input                           rst_n,
 
-    input                           per_frame_vsync,
-    input                           per_frame_href,
-    input                           per_frame_clken,
-    input      [DATA_WIDTH - 1 :0]  per_img_y,
+    input                           pre_frame_vsync,
+    input                           pre_frame_href,
+    input                           pre_frame_clken,
+    input      [DATA_WIDTH - 1 :0]  pre_img_y,
     
     output                          matrix_frame_vsync,
     output                          matrix_frame_href,
@@ -33,19 +33,19 @@ wire                            read_frame_href;
 wire                            read_frame_clken;
 
 //reg define
-reg     [1:0]                   per_frame_vsync_r;
-reg     [1:0]                   per_frame_href_r;
-reg     [1:0]                   per_frame_clken_r;
+reg     [1:0]                   pre_frame_vsync_r;
+reg     [1:0]                   pre_frame_href_r;
+reg     [1:0]                   pre_frame_clken_r;
 
 //*****************************************************
 //**                    main code
 //*****************************************************
 
-assign read_frame_href    = per_frame_href_r[0] ;
-assign read_frame_clken   = per_frame_clken_r[0];
-assign matrix_frame_vsync = per_frame_vsync_r[1];
-assign matrix_frame_href  = per_frame_href_r[1] ;
-assign matrix_frame_clken = per_frame_clken_r[1];
+assign read_frame_href    = pre_frame_href_r[0] ;
+assign read_frame_clken   = pre_frame_clken_r[0];
+assign matrix_frame_vsync = pre_frame_vsync_r[1];
+assign matrix_frame_href  = pre_frame_href_r[1] ;
+assign matrix_frame_clken = pre_frame_clken_r[1];
 
 
 one_column_ram #(
@@ -53,8 +53,8 @@ one_column_ram #(
     .DATA_DEPTH(DATA_DEPTH)
 )u_one_column_ram(
     .clock      (clk),   
-    .clken      (per_frame_clken),
-    .shiftin    (per_img_y),
+    .clken      (pre_frame_clken),
+    .shiftin    (pre_img_y),
 
     .taps0x     (row3_data),
     .taps1x     (row2_data),
@@ -64,14 +64,14 @@ one_column_ram #(
 //将同步信号延迟两拍，用于同步化处理
 always@(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
-        per_frame_vsync_r <= 0;
-        per_frame_href_r  <= 0;
-        per_frame_clken_r <= 0;
+        pre_frame_vsync_r <= 0;
+        pre_frame_href_r  <= 0;
+        pre_frame_clken_r <= 0;
     end
     else begin
-        per_frame_vsync_r <= { per_frame_vsync_r[0], per_frame_vsync };
-        per_frame_href_r  <= { per_frame_href_r[0],  per_frame_href  };
-        per_frame_clken_r <= { per_frame_clken_r[0], per_frame_clken };
+        pre_frame_vsync_r <= { pre_frame_vsync_r[0], pre_frame_vsync };
+        pre_frame_href_r  <= { pre_frame_href_r[0],  pre_frame_href  };
+        pre_frame_clken_r <= { pre_frame_clken_r[0], pre_frame_clken };
     end
 end
 

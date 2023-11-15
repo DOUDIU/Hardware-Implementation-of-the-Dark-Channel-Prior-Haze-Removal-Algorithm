@@ -66,7 +66,9 @@ ppt演示文档：https://docs.google.com/presentation/d/1hftrReSJX6RB1ljNpfOpNf
 
 ​	本工程中modelsim与vivado可以使用***Modelsim Simulator***或者***Vivado Simulator***自带的仿真器进行仿真，本开源工程利用仅在vivado中添加***canny_header***这个头文件，以实现两个仿真器随意运行，全部代码全在***canny_edge_detection***下的.src文件夹内，顶层为**image_process.sv**。工程需仿真***14ms***才能出现结果，Vivado仿真比较慢，推荐使用Modelsim仿真。
 
-​	要进行处理的图片需经过win10自带的3D绘图保存为640*480大小的bmp，可以查看大小是否为9k来验证图片是否可以应用仿真。
+​	要进行处理的图片需经过win10自带的3D绘图保存为640*480大小的bmp，可以查看大小是否为900KB来验证图片是否可以应用仿真。(可以自己算一下，每个真彩色像素是3个字节，bmp的帧头是54个字节，640x480x3+54=900KB)
+
+
 
 ​	有完整C++实现代码，PPT里面有算法具体实现的思路，如有疑惑欢迎提交补充。
 
