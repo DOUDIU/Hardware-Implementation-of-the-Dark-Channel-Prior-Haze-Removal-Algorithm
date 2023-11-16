@@ -1,16 +1,18 @@
-module haze_remove_top(
-    input           clk                 ,
-    input           rst_n               ,  
-    //处理前数据
-    input           pre_frame_vsync     , 
-    input           pre_frame_href      ,  
-    input           pre_frame_clken     , 
-    input   [23:0]  pre_img,       
-    //处理后的数据
-    output          post_frame_vsync    , 
-    output          post_frame_href     ,  
-    output          post_frame_clken    , 
-    output  [23:0]  post_img             
+module haze_removal_top#(
+        parameter Y_ENHANCE_ENABLE = 1
+)(
+        input           clk                 ,
+        input           rst_n               ,  
+        //处理前数据
+        input           pre_frame_vsync     , 
+        input           pre_frame_href      ,  
+        input           pre_frame_clken     , 
+        input   [23:0]  pre_img,       
+        //处理后的数据
+        output          post_frame_vsync    , 
+        output          post_frame_href     ,  
+        output          post_frame_clken    , 
+        output  [23:0]  post_img             
 );
 
 wire                 dark_channel_frame_vsync    ;
@@ -114,67 +116,108 @@ time_alignment u_time_alignment(
 
         .post_A                  (cal_A                     ) 
 );
-            
-haze_remove_cal u_haze_remove_cal(
-        .clk                     (clk                       ),
-        .rst_n                   (rst_n                     ),  
 
-        .pre_src_frame_vsync     (cal_src_frame_vsync       ), 
-        .pre_src_frame_href      (cal_src_frame_href        ),  
-        .pre_src_frame_clken     (cal_src_frame_clken       ), 
-        .pre_img                 (cal_img                   ),
+generate 
+if(Y_ENHANCE_ENABLE == 0) begin
+        haze_remove_cal u_haze_remove_cal(
+                .clk                     (clk                       ),
+                .rst_n                   (rst_n                     ),  
 
-        .pre_tx_frame_vsync      (cal_tx_frame_vsync        ),
-        .pre_tx_frame_href       (cal_tx_frame_href         ),
-        .pre_tx_frame_clken      (cal_tx_frame_clken        ),
-        .pre_tx_img              (cal_tx_img                ),
+                .pre_src_frame_vsync     (cal_src_frame_vsync       ), 
+                .pre_src_frame_href      (cal_src_frame_href        ),  
+                .pre_src_frame_clken     (cal_src_frame_clken       ), 
+                .pre_img                 (cal_img                   ),
 
-        .pre_A                   (cal_A                     ),
+                .pre_tx_frame_vsync      (cal_tx_frame_vsync        ),
+                .pre_tx_frame_href       (cal_tx_frame_href         ),
+                .pre_tx_frame_clken      (cal_tx_frame_clken        ),
+                .pre_tx_img              (cal_tx_img                ),
 
-        .post_frame_vsync        (post_frame_vsync          ), 
-        .post_frame_href         (post_frame_href           ),  
-        .post_frame_clken        (post_frame_clken          ), 
-        .post_img                (post_img                  )
-);
+                .pre_A                   (cal_A                     ),
 
-// VIP_RGB888_YCbCr444	u_rgb_ycncr_haze(
-// 	//global clock
-// 	.clk				(clk					),					
-// 	.rst_n				(rst_n					),				
+                .post_frame_vsync        (post_frame_vsync          ), 
+                .post_frame_href         (post_frame_href           ),  
+                .post_frame_clken        (post_frame_clken          ), 
+                .post_img                (post_img                  )
+        );
+end
+else begin
 
-// 	//Image data prepred to be processd
-// 	.per_frame_vsync	(haze_remove_vsync		),		
-// 	.per_frame_href		(haze_remove_hsync		),		
-// 	.per_frame_clken	(haze_remove_de   		),		
-// 	.per_img_red		(img_haze_remove[23:16]	),			
-// 	.per_img_green		(img_haze_remove[15: 8]	),		
-// 	.per_img_blue		(img_haze_remove[7 : 0]	),			
-	
-// 	//Image data has been processd
-// 	.post_frame_vsync	(post1_frame_vsync		),	
-// 	.post_frame_href	(post1_frame_href 		),		
-// 	.post_frame_clken	(post1_frame_clken		),	
-// 	.post_img_Y			(post1_img_Y     		),			
-// 	.post_img_Cb		(post1_img_Cr    		),			
-// 	.post_img_Cr		(post1_img_Cb    		)			
-// ); 
 
-// YCbCr2RGB	u_ycbcr_to_rgb(
-// 	.i_sys_clk			(clk					),
+        wire                 haze_removal_vsync         ;
+        wire                 haze_removal_hsync         ;
+        wire                 haze_removal_de            ;
+        wire    [23 : 0]     haze_removal_data          ;
+        wire                 tem_YCbCr_vsync            ;
+        wire                 tem_YCbCr_hsync            ;
+        wire                 tem_YCbCr_de               ;
+        wire    [07 : 0]     tem_Y_data                 ;
+        wire    [07 : 0]     tem_Cb_data                ;
+        wire    [07 : 0]     tem_Cr_data                ;
 
-// 	.i_vs				(post1_frame_vsync		),
-// 	.i_hs				(post1_frame_href 		),
-// 	.i_convert_en		(post1_frame_clken		),
-// 	.i_y_data 			(post1_img_Y + 30		),
-// 	.i_cr_data			(post1_img_Cr			),
-// 	.i_cb_data			(post1_img_Cb			),
+        haze_remove_cal u_haze_remove_cal(
+                .clk                     (clk                           ),
+                .rst_n                   (rst_n                         ),  
 
-// 	.o_vs				(post2_frame_vsync		), 
-// 	.o_hs				(post2_frame_href 		),                                                                                                   
-// 	.o_convert_en		(post2_frame_clken		),  
-// 	.o_red  			(post2_img_r      		),
-// 	.o_green			(post2_img_g      		),
-// 	.o_blue				(post2_img_b      		)                                                               
-// );
+                .pre_src_frame_vsync     (cal_src_frame_vsync           ), 
+                .pre_src_frame_href      (cal_src_frame_href            ),  
+                .pre_src_frame_clken     (cal_src_frame_clken           ), 
+                .pre_img                 (cal_img                       ),
+
+                .pre_tx_frame_vsync      (cal_tx_frame_vsync            ),
+                .pre_tx_frame_href       (cal_tx_frame_href             ),
+                .pre_tx_frame_clken      (cal_tx_frame_clken            ),
+                .pre_tx_img              (cal_tx_img                    ),
+
+                .pre_A                   (cal_A                         ),
+
+                .post_frame_vsync        (haze_removal_vsync            ), 
+                .post_frame_href         (haze_removal_hsync            ),  
+                .post_frame_clken        (haze_removal_de               ), 
+                .post_img                (haze_removal_data             )
+        );
+
+        VIP_RGB888_YCbCr444 u_rgb_ycncr_haze(
+                //global clock
+                .clk                    (clk                            ),
+                .rst_n                  (rst_n                          ),
+
+                //Image data prepred to be processd
+                .pre_frame_vsync        (haze_removal_vsync             ),
+                .pre_frame_href         (haze_removal_hsync             ),
+                .pre_frame_clken        (haze_removal_de                ),
+                .pre_img_red            (haze_removal_data[16+:8]       ),
+                .pre_img_green          (haze_removal_data[ 8+:8]       ),
+                .pre_img_blue           (haze_removal_data[ 0+:8]       ),
+                
+                //Image data has been processd
+                .post_frame_vsync       (tem_YCbCr_vsync                ),
+                .post_frame_href        (tem_YCbCr_hsync                ),
+                .post_frame_clken       (tem_YCbCr_de                   ),
+                .post_img_Y             (tem_Y_data                     ),
+                .post_img_Cb            (tem_Cb_data                    ),
+                .post_img_Cr            (tem_Cr_data                    )
+        ); 
+
+        YCbCr2RGB u_ycbcr_to_rgb(
+                .i_sys_clk              (clk                            ),
+
+                .i_vs                   (tem_YCbCr_vsync                ),
+                .i_hs                   (tem_YCbCr_hsync                ),
+                .i_convert_en           (tem_YCbCr_de                   ),
+                .i_y_data               (tem_Y_data + 30                ),
+                .i_cr_data              (tem_Cb_data                    ),
+                .i_cb_data              (tem_Cr_data                    ),
+
+                .o_vs                   (post_frame_vsync               ),
+                .o_hs                   (post_frame_href                ),
+                .o_convert_en           (post_frame_clken               ),  
+                .o_red                  (post_img[ 0+:8]                ),
+                .o_green                (post_img[ 8+:8]                ),
+                .o_blue                 (post_img[16+:8]                )
+        );
+end     
+endgenerate
+
 
 endmodule

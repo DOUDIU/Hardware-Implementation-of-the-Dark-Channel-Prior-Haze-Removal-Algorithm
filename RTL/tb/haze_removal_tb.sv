@@ -1,6 +1,23 @@
 `timescale 1ns / 1ps
 module haze_removal_tb();
 
+`define Modelsim_Sim
+// `define Vivado_Sim
+
+//--------------------------------------------------------------------------------
+`ifdef Modelsim_Sim
+localparam	PIC_INPUT_PATH  	= 	"..\\pic\\duck.bmp"			;
+localparam	PIC_OUTPUT_PATH 	= 	"..\\pic\\outcom.bmp"  		;
+`endif
+//--------------------------------------------------------------------------------
+`ifdef Vivado_Sim
+localparam	PIC_INPUT_PATH  	= 	"../../../../../pic/duck.bmp"			;
+localparam	PIC_OUTPUT_PATH 	= 	"../../../../../pic/outcom.bmp"  		;
+`endif
+
+localparam	PIC_WIDTH  			=	640							;
+localparam	PIC_HEIGHT 			=	480 						;
+
 reg         cmos_clk   = 0;
 reg         cmos_rst_n = 0;
 
@@ -22,23 +39,25 @@ initial #(20*cmos0_period) cmos_rst_n = 1;
 //--------------------------------------------------
 //Camera Simulation
 sim_cmos #(
-		.PIC_PATH	("..\\pic\\duck_fog.bmp")
-	,	.IMG_HDISP 	(640)
-	,	.IMG_VDISP 	(480)
+		.PIC_PATH		(PIC_INPUT_PATH			)
+	,	.IMG_HDISP 		(PIC_WIDTH 				)
+	,	.IMG_VDISP 		(PIC_HEIGHT				)
 )u_sim_cmos0(
-        .clk            (cmos_clk	    )
-    ,   .rst_n          (cmos_rst_n     )
-	,   .CMOS_VSYNC     (cmos_vsync     )
-	,   .CMOS_HREF      (cmos_href      )
-	,   .CMOS_CLKEN     (cmos_clken     )
-	,   .CMOS_DATA      (cmos_data      )
+        .clk            (cmos_clk	    		)
+    ,   .rst_n          (cmos_rst_n     		)
+	,   .CMOS_VSYNC     (cmos_vsync     		)
+	,   .CMOS_HREF      (cmos_href      		)
+	,   .CMOS_CLKEN     (cmos_clken     		)
+	,   .CMOS_DATA      (cmos_data      		)
 	,   .X_POS          ()
 	,   .Y_POS          ()
 );
 
 //--------------------------------------------------
 //Image Processing
-haze_remove_top u_haze_removal_top(
+haze_removal_top #(
+	.Y_ENHANCE_ENABLE	(0						)
+)u_haze_removal_top(
 	.clk               	(cmos_clk	            ),
 	.rst_n             	(cmos_rst_n             ),  
 	//处理前数据	
@@ -56,10 +75,10 @@ haze_remove_top u_haze_removal_top(
 //--------------------------------------------------
 //Video saving 
 video_to_pic #(
-        .PIC_PATH       ("..\\pic\\outcom.bmp"  )
+        .PIC_PATH       (PIC_OUTPUT_PATH		)
     ,   .START_FRAME    (2                      )
-	,	.IMG_HDISP      (640                    )
-	,	.IMG_VDISP      (480                    )
+	,	.IMG_HDISP      (PIC_WIDTH 				)
+	,	.IMG_VDISP      (PIC_HEIGHT				)
 )u_video_to_pic0(
         .clk            (cmos_clk	            )
     ,   .rst_n          (cmos_rst_n             )

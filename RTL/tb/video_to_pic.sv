@@ -76,6 +76,7 @@ end
 
 //---------------------------------------------	
 //initial the BMP file header
+//The detail BMP file header is inpart from https://blog.csdn.net/Meteor_s/article/details/82414155 and inpart from my test. 
 initial begin
     for(iIndex = 0; iIndex < 54; iIndex = iIndex + 1) begin
         BmpHead[iIndex] = 0;
@@ -109,9 +110,8 @@ initial begin
             Vip_BmpData[iIndex] = vip_pixel_data[iIndex-54];
         end
     end  
-    for (iIndex = 0; iIndex < BMP_SIZE + 1; iIndex = iIndex + 4) begin
-        rBmpWord = {Vip_BmpData[iIndex+3],Vip_BmpData[iIndex+2],Vip_BmpData[iIndex+1],Vip_BmpData[iIndex]};
-        $fwrite(iBmpFileId,"%u",rBmpWord);
+    for (iIndex = 0; iIndex < BMP_SIZE + 1; iIndex = iIndex + 1) begin
+        $fwrite(iBmpFileId,"%c",Vip_BmpData[iIndex]);
     end
     $fclose(iBmpFileId);
 end

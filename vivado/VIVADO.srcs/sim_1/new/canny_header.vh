@@ -1,1 +1,0 @@
-`define Vivado_Sim
