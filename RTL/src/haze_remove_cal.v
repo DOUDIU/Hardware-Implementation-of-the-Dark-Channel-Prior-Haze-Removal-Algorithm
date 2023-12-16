@@ -46,6 +46,17 @@ reg  signed   [10 : 0]     post_img_b;
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
+        pre_A_d1                <=  0                       ;
+        tx_value_d1             <=  0                       ;
+    end
+    else begin
+        pre_A_d1                <=  pre_A                   ;
+        tx_value_d1             <=  tx_value                ;
+    end
+end
+
+always@(posedge clk or negedge rst_n)begin
+    if(!rst_n)begin
         value_tem_r     <=  0;
         value_tem_g     <=  0;
         value_tem_b     <=  0;
@@ -57,6 +68,7 @@ always@(posedge clk or negedge rst_n)begin
     end
 end
 
+//critical path : use xilinx IP 'divider generator' to replace '/';
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         post_img_r      <=  0;
@@ -70,18 +82,13 @@ always@(posedge clk or negedge rst_n)begin
     end
 end
 
-
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
-        pre_A_d1                <=  0                       ;
-        tx_value_d1             <=  0                       ;
         pre_tx_frame_vsync_d1   <=  0                       ;
         pre_tx_frame_href_d1    <=  0                       ;
         pre_tx_frame_clken_d1   <=  0                       ;
     end
     else begin
-        pre_A_d1                <=  pre_A                   ;
-        tx_value_d1             <=  tx_value                ;
         pre_tx_frame_vsync_d1   <=  pre_tx_frame_vsync      ;
         pre_tx_frame_href_d1    <=  pre_tx_frame_href       ;
         pre_tx_frame_clken_d1   <=  pre_tx_frame_clken      ;

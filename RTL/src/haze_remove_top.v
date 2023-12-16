@@ -1,18 +1,18 @@
 module haze_removal_top#(
         parameter Y_ENHANCE_ENABLE = 1
 )(
-        input           clk                 ,
-        input           rst_n               ,  
-        //处理前数据
-        input           pre_frame_vsync     , 
-        input           pre_frame_href      ,  
-        input           pre_frame_clken     , 
-        input   [23:0]  pre_img,       
+        input           clk                     ,
+        input           rst_n                   ,  
+        //处理前数据    
+        input           pre_frame_vsync         , 
+        input           pre_frame_href          ,  
+        input           pre_frame_clken         , 
+        input   [23:0]  pre_img                 ,       
         //处理后的数据
-        output          post_frame_vsync    , 
-        output          post_frame_href     ,  
-        output          post_frame_clken    , 
-        output  [23:0]  post_img             
+        output          post_frame_vsync        , 
+        output          post_frame_href         ,  
+        output          post_frame_clken        , 
+        output  [23:0]  post_img                
 );
 
 wire                 dark_channel_frame_vsync    ;
@@ -54,7 +54,7 @@ dark_channel u_dark_channel(
         .post_frame_href        (dark_channel_frame_href    ),  
         .post_frame_clken       (dark_channel_frame_clken   ), 
         .post_img               (dark_channel_img           )
-    );    
+);
 
 calculate_A u_calculate_A(
         .clk                    (clk                        ),

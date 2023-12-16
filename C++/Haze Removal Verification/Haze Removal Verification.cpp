@@ -12,7 +12,7 @@ using namespace cv;
 
 int main()
 {
-	Mat src = imread("../../pic/duck_fog.bmp");
+	Mat src = imread("../../pic/duck.bmp");
 	Mat dst;
 	Mat dark_channel_mat = dark_channel(src, 3);//输出的是暗通道图像
 

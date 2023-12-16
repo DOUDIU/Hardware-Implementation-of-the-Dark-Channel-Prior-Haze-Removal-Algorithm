@@ -11,7 +11,7 @@ module dark_channel(
         output          post_frame_href     ,  
         output          post_frame_clken    , 
         output  [7 :0]  post_img  
-    );
+);
 
 
 wire            src_min_frame_vsync         ;
