@@ -56,36 +56,37 @@ sim_cmos #(
 //--------------------------------------------------
 //Image Processing
 haze_removal_top #(
-	.Y_ENHANCE_ENABLE	(0						)
+	 	.Y_ENHANCE_ENABLE	(0						)
+	,	.PIC_WIDTH			(PIC_WIDTH				)
 )u_haze_removal_top(
-	.clk               	(cmos_clk	            ),
-	.rst_n             	(cmos_rst_n             ),  
+		.clk               	(cmos_clk	            )
+	,	.rst_n             	(cmos_rst_n             )
 	//处理前数据	
-	.pre_frame_vsync   	(cmos_vsync             ), 
-	.pre_frame_href    	(cmos_href              ),  
-	.pre_frame_clken   	(cmos_clken             ), 
-	.pre_img           	(cmos_data              ),       
+	,	.pre_frame_vsync   	(cmos_vsync             )
+	,	.pre_frame_href    	(cmos_href              )
+	,	.pre_frame_clken   	(cmos_clken             )
+	,	.pre_img           	(cmos_data              )
 	//处理后的数据
-	.post_frame_vsync  	(haze_removal_vsync		), 
-	.post_frame_href   	(haze_removal_hsync		),  
-	.post_frame_clken  	(haze_removal_de   		), 
-	.post_img          	(haze_removal_data      )
+	,	.post_frame_vsync  	(haze_removal_vsync		)
+	,	.post_frame_href   	(haze_removal_hsync		)
+	,	.post_frame_clken  	(haze_removal_de   		)
+	,	.post_img          	(haze_removal_data      )
 );
 
 //--------------------------------------------------
 //Video saving 
 video_to_pic #(
-        .PIC_PATH       (PIC_OUTPUT_PATH		)
-    ,   .START_FRAME    (2                      )
+		.PIC_PATH       (PIC_OUTPUT_PATH		)
+	,	.START_FRAME    (2                      )
 	,	.IMG_HDISP      (PIC_WIDTH 				)
 	,	.IMG_VDISP      (PIC_HEIGHT				)
 )u_video_to_pic0(
-        .clk            (cmos_clk	            )
-    ,   .rst_n          (cmos_rst_n             )
-    ,   .video_vsync    (haze_removal_vsync		)
-    ,   .video_hsync    (haze_removal_hsync		)
-    ,   .video_de       (haze_removal_de   		)
-    ,   .video_data     (haze_removal_data      )
+	 	.clk            (cmos_clk	            )
+	,	.rst_n          (cmos_rst_n             )
+	,	.video_vsync    (haze_removal_vsync		)
+	,	.video_hsync    (haze_removal_hsync		)
+	,	.video_de       (haze_removal_de   		)
+	,	.video_data     (haze_removal_data      )
 );
 
 

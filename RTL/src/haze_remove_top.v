@@ -1,5 +1,6 @@
 module haze_removal_top#(
-        parameter Y_ENHANCE_ENABLE = 1
+        parameter Y_ENHANCE_ENABLE = 1          ,
+        parameter PIC_WIDTH        = 640
 )(
         input           clk                     ,
         input           rst_n                   ,  
@@ -41,35 +42,37 @@ wire                 cal_tx_frame_clken          ;
 wire    [7  : 0]     cal_tx_img                  ;
 wire    [7  : 0]     cal_A                       ;
 
-dark_channel u_dark_channel(
-        .clk                    (clk                        ),
-        .rst_n                  (rst_n                      ),  
-        //处理前数据        
-        .pre_frame_vsync        (pre_frame_vsync            ), 
-        .pre_frame_href         (pre_frame_href             ),  
-        .pre_frame_clken        (pre_frame_clken            ), 
-        .pre_img                (pre_img                    ),
-        //处理后的数据      
-        .post_frame_vsync       (dark_channel_frame_vsync   ), 
-        .post_frame_href        (dark_channel_frame_href    ),  
-        .post_frame_clken       (dark_channel_frame_clken   ), 
-        .post_img               (dark_channel_img           )
+dark_channel#(
+        .PIC_WIDTH              (PIC_WIDTH                      )
+)u_dark_channel(
+        .clk                    (clk                            ),
+        .rst_n                  (rst_n                          ),  
+        //处理前数据
+        .pre_frame_vsync        (pre_frame_vsync                ), 
+        .pre_frame_href         (pre_frame_href                 ),  
+        .pre_frame_clken        (pre_frame_clken                ), 
+        .pre_img                (pre_img                        ),
+        //处理后的数据
+        .post_frame_vsync       (dark_channel_frame_vsync       ), 
+        .post_frame_href        (dark_channel_frame_href        ),  
+        .post_frame_clken       (dark_channel_frame_clken       ), 
+        .post_img               (dark_channel_img               )
 );
 
 calculate_A u_calculate_A(
-        .clk                    (clk                        ),
-        .rst_n                  (rst_n                      ),  
+        .clk                    (clk                            ),
+        .rst_n                  (rst_n                          ),  
         //处理前数据    
-        .pre_frame_vsync        (pre_frame_vsync            ), 
-        .pre_frame_href         (pre_frame_href             ),  
-        .pre_frame_clken        (pre_frame_clken            ), 
-        .pre_img                (pre_img                    ),       
+        .pre_frame_vsync        (pre_frame_vsync                ), 
+        .pre_frame_href         (pre_frame_href                 ),  
+        .pre_frame_clken        (pre_frame_clken                ), 
+        .pre_img                (pre_img                        ),       
         //处理后的数据  
-        .post_frame_vsync       (src_cal_A_frame_vsync      ), 
-        .post_frame_href        (src_cal_A_frame_href       ),  
-        .post_frame_clken       (src_cal_A_frame_clken      ),
-        .post_result            (src_cal_A_result           ), 
-        .post_done              (src_cal_A_valid            )
+        .post_frame_vsync       (src_cal_A_frame_vsync          ), 
+        .post_frame_href        (src_cal_A_frame_href           ),  
+        .post_frame_clken       (src_cal_A_frame_clken          ),
+        .post_result            (src_cal_A_result               ), 
+        .post_done              (src_cal_A_valid                )
 );
 
 tx_get u_tx_get(

@@ -1,16 +1,18 @@
-module search_block_min(
-        input           clk                 ,
-        input           rst_n               ,  
-        //处理前数据
-        input           pre_frame_vsync     , 
-        input           pre_frame_href      ,  
-        input           pre_frame_clken     , 
-        input   [23:0]  pre_img             ,       
-        //处理后的数据
-        output          post_frame_vsync    , 
-        output          post_frame_href     ,  
-        output          post_frame_clken    , 
-        output  [7 :0]  post_img            
+module search_block_min#(
+    parameter       PIC_WIDTH  =   640   
+)(
+    input           clk                 ,
+    input           rst_n               ,  
+    //处理前数据
+    input           pre_frame_vsync     , 
+    input           pre_frame_href      ,  
+    input           pre_frame_clken     , 
+    input   [23:0]  pre_img             ,       
+    //处理后的数据
+    output          post_frame_vsync    , 
+    output          post_frame_href     ,  
+    output          post_frame_clken    , 
+    output  [7 :0]  post_img            
 );
 
 
@@ -52,8 +54,8 @@ wire        [7 : 0]     min_data_2          ;
 
 
 matrix_generate_3x3 #(
-    .DATA_WIDTH (8  ),
-    .DATA_DEPTH (640)
+    .DATA_WIDTH             (8                      ),
+    .DATA_DEPTH             (PIC_WIDTH              )
 )u_matrix_generate_3x3(
     .clk                    (clk                    ),  
     .rst_n                  (rst_n                  ),
