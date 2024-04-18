@@ -1,4 +1,4 @@
-module haze_remove_cal(
+module haze_removal_cal(
     input               clk                     ,
     input               rst_n                   ,  
     //处理前数据

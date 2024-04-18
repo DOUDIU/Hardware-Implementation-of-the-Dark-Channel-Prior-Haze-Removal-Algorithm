@@ -76,72 +76,72 @@ calculate_A u_calculate_A(
 );
 
 tx_get u_tx_get(
-        .clk                    (clk                        ),
-        .rst_n                  (rst_n                      ), 
-        //处理前数据    
-        .pre_frame_vsync        (dark_channel_frame_vsync   ),
-        .pre_frame_href         (dark_channel_frame_href    ), 
-        .pre_frame_clken        (dark_channel_frame_clken   ),
-        .pre_img                (dark_channel_img           ),
-        .A_value                (src_cal_A_result           ),
-        //处理后的数据  
-        .post_frame_vsync       (src_tx_frame_vsync         ),
-        .post_frame_href        (src_tx_frame_href          ),
-        .post_frame_clken       (src_tx_frame_clken         ),
-        .post_img               (src_tx_img                 )
+        .clk                    (clk                            ),
+        .rst_n                  (rst_n                          ), 
+        //处理前数据
+        .pre_frame_vsync        (dark_channel_frame_vsync       ),
+        .pre_frame_href         (dark_channel_frame_href        ), 
+        .pre_frame_clken        (dark_channel_frame_clken       ),
+        .pre_img                (dark_channel_img               ),
+        .A_value                (src_cal_A_result               ),
+        //处理后的数据
+        .post_frame_vsync       (src_tx_frame_vsync             ),
+        .post_frame_href        (src_tx_frame_href              ),
+        .post_frame_clken       (src_tx_frame_clken             ),
+        .post_img               (src_tx_img                     )
 );
 
 time_alignment u_time_alignment(
-        .clk                     (clk                       ),
-        .rst_n                   (rst_n                     ),  
+        .clk                    (clk                            ),
+        .rst_n                  (rst_n                          ),
         //处理前数据
-        .pre_src_frame_vsync     (pre_frame_vsync           ), 
-        .pre_src_frame_href      (pre_frame_href            ),  
-        .pre_src_frame_clken     (pre_frame_clken           ), 
-        .pre_img                 (pre_img                   ),
+        .pre_src_frame_vsync    (pre_frame_vsync                ), 
+        .pre_src_frame_href     (pre_frame_href                 ),
+        .pre_src_frame_clken    (pre_frame_clken                ), 
+        .pre_img                (pre_img                        ),
 
-        .pre_tx_frame_vsync      (src_tx_frame_vsync        ),
-        .pre_tx_frame_href       (src_tx_frame_href         ),
-        .pre_tx_frame_clken      (src_tx_frame_clken        ),
-        .pre_tx_img              (src_tx_img                ),
+        .pre_tx_frame_vsync     (src_tx_frame_vsync             ),
+        .pre_tx_frame_href      (src_tx_frame_href              ),
+        .pre_tx_frame_clken     (src_tx_frame_clken             ),
+        .pre_tx_img             (src_tx_img                     ),
 
-        .pre_A                   (src_cal_A_result          ),
-        //处理后的数据()
-        .post_src_frame_vsync    (cal_src_frame_vsync       ), 
-        .post_src_frame_href     (cal_src_frame_href        ),  
-        .post_src_frame_clken    (cal_src_frame_clken       ), 
-        .post_img                (cal_img                   ),
+        .pre_A                  (src_cal_A_result               ),
+        //处理后的数据()        
+        .post_src_frame_vsync   (cal_src_frame_vsync            ),
+        .post_src_frame_href    (cal_src_frame_href             ),
+        .post_src_frame_clken   (cal_src_frame_clken            ),
+        .post_img               (cal_img                        ),
 
-        .post_tx_frame_vsync     (cal_tx_frame_vsync        ),
-        .post_tx_frame_href      (cal_tx_frame_href         ),
-        .post_tx_frame_clken     (cal_tx_frame_clken        ),
-        .post_tx_img             (cal_tx_img                ),
+        .post_tx_frame_vsync    (cal_tx_frame_vsync             ),
+        .post_tx_frame_href     (cal_tx_frame_href              ),
+        .post_tx_frame_clken    (cal_tx_frame_clken             ),
+        .post_tx_img            (cal_tx_img                     ),
 
-        .post_A                  (cal_A                     ) 
+        .post_A                 (cal_A                          ) 
 );
 
 generate 
 if(Y_ENHANCE_ENABLE == 0) begin
-        haze_remove_cal u_haze_remove_cal(
-                .clk                     (clk                       ),
-                .rst_n                   (rst_n                     ),  
+        haze_removal_cal u_haze_removal_cal(
+                .clk                     (clk                           ),
+                .rst_n                   (rst_n                         ),  
 
-                .pre_src_frame_vsync     (cal_src_frame_vsync       ), 
-                .pre_src_frame_href      (cal_src_frame_href        ),  
-                .pre_src_frame_clken     (cal_src_frame_clken       ), 
-                .pre_img                 (cal_img                   ),
+                .pre_src_frame_vsync     (cal_src_frame_vsync           ), 
+                .pre_src_frame_href      (cal_src_frame_href            ),  
+                .pre_src_frame_clken     (cal_src_frame_clken           ), 
+                .pre_img                 (cal_img                       ),
 
-                .pre_tx_frame_vsync      (cal_tx_frame_vsync        ),
-                .pre_tx_frame_href       (cal_tx_frame_href         ),
-                .pre_tx_frame_clken      (cal_tx_frame_clken        ),
-                .pre_tx_img              (cal_tx_img                ),
+                .pre_tx_frame_vsync      (cal_tx_frame_vsync            ),
+                .pre_tx_frame_href       (cal_tx_frame_href             ),
+                .pre_tx_frame_clken      (cal_tx_frame_clken            ),
+                .pre_tx_img              (cal_tx_img                    ),
 
-                .pre_A                   (cal_A                     ),
+                .pre_A                   (cal_A                         ),
 
-                .post_frame_vsync        (post_frame_vsync          ), 
-                .post_frame_href         (post_frame_href           ),  
-                .post_frame_clken        (post_frame_clken          ), 
-                .post_img                (post_img                  )
+                .post_frame_vsync        (post_frame_vsync              ), 
+                .post_frame_href         (post_frame_href               ),  
+                .post_frame_clken        (post_frame_clken              ), 
+                .post_img                (post_img                      )
         );
 end
 else begin
@@ -158,7 +158,7 @@ else begin
         wire    [07 : 0]     tem_Cb_data                ;
         wire    [07 : 0]     tem_Cr_data                ;
 
-        haze_remove_cal u_haze_remove_cal(
+        haze_removal_cal u_haze_removal_cal(
                 .clk                     (clk                           ),
                 .rst_n                   (rst_n                         ),  
 
