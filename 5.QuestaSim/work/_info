@@ -1,0 +1,482 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/github/Canny-Edge-Detection/QuestaSim
+T_opt
+!s110 1718091508
+VJSXbUlRnf1SCeRJX<DC;Z1
+Z1 04 15 4 work haze_removal_tb fast 0
+=3-00e04c68016d-6667fef3-2f7-ed3c
+Z2 o-quiet -auto_acc_if_foreign -work work
+Z3 tCvgOpt 0
+n@_opt
+Z4 OL;O;2020.1;71
+T_opt1
+!s110 1714484399
+Vb0KTHhJ4072fM>k`25NH:0
+R1
+=1-00e04c361f81-6630f4af-2-41fc
+R2
+R3
+n@_opt1
+R4
+R0
+T_opt2
+!s110 1714484420
+Ve_[`:1;CKf]61`5aC>jf>3
+R1
+=1-00e04c361f81-6630f4c4-286-43d0
+o-quiet -auto_acc_if_foreign -work work +acc
+R3
+n@_opt2
+R4
+R0
+vcalculate_A
+Z5 !s110 1718091504
+!i10b 1
+!s100 giBBYe3;caDCXb1me>DKE2
+Z6 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IEYjFheEY6hSYj_zaa=n1?1
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 dE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/5.QuestaSim
+w1700051101
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v
+!i122 34
+L0 1 93
+Z9 OL;L;2020.1;71
+r1
+!s85 0
+31
+Z10 !s108 1718091504.000000
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v|
+!i113 0
+Z11 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+ncalculate_@a
+vdark_channel
+R5
+!i10b 1
+!s100 di>b`TXXkYgnFo=??[j8G0
+R6
+I:TIio232okKZ@I55Fe_Vn0
+R7
+R8
+w1703059712
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v
+!i122 35
+L0 1 71
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v|
+!i113 0
+R11
+R3
+vfifo_ram
+R5
+!i10b 1
+!s100 RfeAc65>j^WIX;__Z2=VG0
+R6
+Ij25E62GiDGGgdjDJQN8zi0
+R7
+R8
+w1668688038
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v
+!i122 36
+L0 1 68
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v|
+!i113 0
+R11
+R3
+vhaze_removal_cal
+R5
+!i10b 1
+!s100 dd6:ze^8khc4bY3e];?Bk3
+R6
+I9@Jn@^5TfeAzVi0zE_NLn3
+R7
+R8
+w1713426961
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v
+!i122 37
+L0 1 178
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v|
+!i113 0
+R11
+R3
+vhaze_removal_tb
+Z12 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z13 !s110 1718091505
+!i10b 1
+!s100 ILJ==H2o;1>EmGZ0Y;GKM0
+R6
+IImn=3JjeZLIg032=Bij@j1
+R7
+S1
+R8
+w1718091450
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/haze_removal_tb.sv
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/haze_removal_tb.sv
+!i122 48
+L0 2 97
+R9
+r1
+!s85 0
+31
+Z14 !s108 1718091505.000000
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/haze_removal_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/haze_removal_tb.sv|
+!i113 0
+Z15 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+vhaze_removal_top
+R5
+!i10b 1
+!s100 Z5FQ:bVG=ghNIb<Uf4Y3h0
+R6
+I:?Kf?F<2nK_dE_jN92OE72
+R7
+R8
+w1718090708
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v
+!i122 38
+L0 1 226
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v|
+!i113 0
+R11
+R3
+vhaze_remove_cal
+!s110 1703076435
+!i10b 1
+!s100 O>kz;d=1YMc=jLS5]eo2a0
+I]_zEH_^>eMXE4YjgEclhO0
+R7
+Z16 dE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/QuestaSim
+w1703062008
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_cal.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_cal.v
+L0 1
+Z17 OL;L;10.6c;65
+r1
+!s85 0
+31
+!s108 1703076435.000000
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_cal.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_cal.v|
+!i113 0
+R11
+R3
+vhaze_remove_top
+!s110 1703060254
+!i10b 1
+!s100 0Hj1=SF`QHZY3z4`:114o1
+Ie;=B6TmDSXTad_^;j?=d<0
+R7
+R16
+w1703000972
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_top.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_top.v
+L0 1
+R17
+r1
+!s85 0
+31
+!s108 1703060254.000000
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_top.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/RTL/src/haze_remove_top.v|
+!i113 0
+R11
+R3
+vmatrix_generate_3x3
+R5
+!i10b 1
+!s100 NL10@^aF__G_z@F8z`JkW0
+R6
+IMB;W7WfDQ?:f5G=j6a3_j3
+R7
+R8
+w1700051176
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v
+!i122 39
+L0 1 104
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v|
+!i113 0
+R11
+R3
+vone_column_ram
+R5
+!i10b 1
+!s100 :zlO81T75Vn`<SB0jl52d3
+R6
+I?0RG]6oA2L2Rl5<mUN3=e3
+R7
+R8
+w1684484609
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v
+!i122 40
+L0 1 69
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v|
+!i113 0
+R11
+R3
+vsearch_block_min
+R5
+!i10b 1
+!s100 [;`JfM4CK:PnGkk<Jl7K02
+R6
+IGP:E7oRm?FI0iG9:>EaZ<0
+R7
+R8
+w1703001124
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v
+!i122 41
+L0 1 158
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v|
+!i113 0
+R11
+R3
+vsim_cmos
+R12
+R13
+!i10b 1
+!s100 80h40Xi05?8VnK=MWjd_C3
+R6
+Ij<D4XUB`P:X2H[BIK5[X<1
+R7
+S1
+R8
+w1695793565
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv
+!i122 49
+L0 1 203
+R9
+r1
+!s85 0
+31
+R14
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv|
+!i113 0
+R15
+R3
+vsort3
+R5
+!i10b 1
+!s100 Wd5N7zQU[^SAm6kKYP4>b2
+R6
+IgY^A7zjh]>hTZ<^KS@?W_2
+R7
+R8
+w1596592643
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v
+!i122 42
+L0 1 47
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v|
+!i113 0
+R11
+R3
+vsrc_min
+R5
+!i10b 1
+!s100 C_1`K?o0j3M>BNQEkYzU00
+R6
+I]?JHz96TiOW@gk`X7ij:72
+R7
+R8
+Z18 w1700051174
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v
+!i122 43
+L0 1 64
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v|
+!i113 0
+R11
+R3
+vtime_alignment
+R5
+!i10b 1
+!s100 Yo=@D8=X@IKWakoa@EB0]1
+R6
+IokIi=ZYDoQ`Ya6_b_]H`13
+R7
+R8
+R18
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v
+!i122 44
+L0 1 77
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v|
+!i113 0
+R11
+R3
+vtx_get
+R5
+!i10b 1
+!s100 CdRKHdMUcQOO9gW;fGX]Z2
+R6
+IA8m_i`PKPKL^AdjkRM_<e2
+R7
+R8
+w1700051173
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v
+!i122 45
+L0 1 57
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v|
+!i113 0
+R11
+R3
+vvideo_to_pic
+R12
+R13
+!i10b 1
+!s100 cUGiO2G:km]79C6=0Uo]I0
+R6
+IQ]U3d8QPSlbLjE2hDaWWH0
+R7
+S1
+R8
+w1718091445
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/video_to_pic.sv
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/video_to_pic.sv
+!i122 50
+L0 2 123
+R9
+r1
+!s85 0
+31
+R14
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/video_to_pic.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/video_to_pic.sv|
+!i113 0
+R15
+R3
+vVIP_RGB888_YCbCr444
+R13
+!i10b 1
+!s100 S<BmT2BF93ea655c5XWTl1
+R6
+IJf@MdA;[InC[kD5ODlReC3
+R7
+R8
+w1706419510
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/VIP_RGB888_YCbCr444.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/VIP_RGB888_YCbCr444.v
+!i122 46
+L0 1 139
+R9
+r1
+!s85 0
+31
+R10
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/VIP_RGB888_YCbCr444.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/VIP_RGB888_YCbCr444.v|
+!i113 0
+R11
+R3
+n@v@i@p_@r@g@b888_@y@cb@cr444
+vYCbCr2RGB
+R13
+!i10b 1
+!s100 dBRFY2;S@BUlH^9GBzo;83
+R6
+IL?91T_Q89UkNNS<jA6I;:3
+R7
+R8
+w1684160531
+8E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/ycbcr2rgb.v
+FE:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/ycbcr2rgb.v
+!i122 47
+L0 3 160
+R9
+r1
+!s85 0
+31
+R14
+!s107 E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/ycbcr2rgb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/ycbcr2rgb.v|
+!i113 0
+R11
+R3
+n@y@cb@cr2@r@g@b

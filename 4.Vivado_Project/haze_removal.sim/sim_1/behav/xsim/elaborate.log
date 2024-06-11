@@ -1,0 +1,64 @@
+Vivado Simulator v2023.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Vivado2023.1/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot haze_removal_tb_behav xil_defaultlib.haze_removal_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 24 for port 'pre_img' [E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v:54]
+WARNING: [VRFC 10-3091] actual bit length 24 differs from formal bit length 8 for port 'pre_img_y' [E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v:66]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv" Line 1. Module sim_cmos(PIC_PATH="../../../../../6.Pic/duck.bmp") doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v" Line 1. Module haze_removal_top(Y_ENHANCE_ENABLE=0) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v" Line 1. Module dark_channel doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v" Line 1. Module src_min doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v" Line 1. Module search_block_min doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v" Line 1. Module matrix_generate_3x3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v" Line 1. Module one_column_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v" Line 1. Module fifo_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v" Line 1. Module fifo_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v" Line 1. Module calculate_A doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v" Line 1. Module tx_get doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v" Line 1. Module time_alignment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v" Line 1. Module haze_removal_cal doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv" Line 1. Module sim_cmos(PIC_PATH="../../../../../6.Pic/duck.bmp") doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_top.v" Line 1. Module haze_removal_top(Y_ENHANCE_ENABLE=0) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/dark_channel.v" Line 1. Module dark_channel doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/src_min.v" Line 1. Module src_min doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/search_block_min.v" Line 1. Module search_block_min doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/matrix_generate_3x3.v" Line 1. Module matrix_generate_3x3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/one_column_ram.v" Line 1. Module one_column_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v" Line 1. Module fifo_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/fifo_ram.v" Line 1. Module fifo_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/sort3.v" Line 1. Module sort3 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/calculate_A.v" Line 1. Module calculate_A doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/tx_get.v" Line 1. Module tx_get doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/time_alignment.v" Line 1. Module time_alignment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/src/haze_removal_cal.v" Line 1. Module haze_removal_cal doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.sim_cmos(PIC_PATH="../../../../....
+Compiling module xil_defaultlib.src_min
+Compiling module xil_defaultlib.fifo_ram
+Compiling module xil_defaultlib.one_column_ram
+Compiling module xil_defaultlib.matrix_generate_3x3
+Compiling module xil_defaultlib.sort3
+Compiling module xil_defaultlib.search_block_min
+Compiling module xil_defaultlib.dark_channel
+Compiling module xil_defaultlib.calculate_A
+Compiling module xil_defaultlib.tx_get
+Compiling module xil_defaultlib.time_alignment
+Compiling module xil_defaultlib.haze_removal_cal
+Compiling module xil_defaultlib.haze_removal_top(Y_ENHANCE_ENABL...
+Compiling module xil_defaultlib.video_to_pic(PIC_PATH="../../../...
+Compiling module xil_defaultlib.haze_removal_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot haze_removal_tb_behav

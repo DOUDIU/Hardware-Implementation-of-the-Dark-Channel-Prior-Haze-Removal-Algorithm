@@ -1,0 +1,9 @@
+﻿  Haze Removal Verification.cpp
+E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\2.C++_Model\Haze Removal Verification\function.h(144,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\2.C++_Model\Haze Removal Verification\function.h(171,14): warning C4305: “=”: 从“double”到“float”截断
+E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\2.C++_Model\Haze Removal Verification\function.h(173,62): warning C4244: “=”: 从“float”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=uchar
+          ]
+  Haze Removal Verification.vcxproj -> E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\2.C++_Model\Haze Removal Verification\x64\Debug\Haze Removal Verification.exe
