@@ -1,4 +1,0 @@
-E:\github\Single-Image-Haze-Removal-Using-Dark-Channel-Prior\C++\Haze Removal Verification\x64\Debug\Haze Removal Verification.exe
-E:\github\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\C++\Haze Removal Verification\x64\Debug\Haze Removal Verification.exe
-E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\C++\Haze Removal Verification\x64\Debug\Haze Removal Verification.exe
-E:\github\fpga_project\Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA\2.C++_Model\Haze Removal Verification\x64\Debug\Haze Removal Verification.exe

@@ -1,4 +1,0 @@
-Running: xsim.dir/haze_removal_tb_behav/xsimk.exe -simmode gui -wdb haze_removal_tb_behav.wdb -simrunnum 0 -socket 13632
-Design successfully loaded
-Design Loading Memory Usage: 14184 KB (Peak: 14184 KB)
-Design Loading CPU Usage: 0 ms

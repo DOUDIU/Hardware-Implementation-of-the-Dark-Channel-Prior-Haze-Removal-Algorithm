@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/sim_cmos_tb.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sim_cmos
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/video_to_pic.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module video_to_pic
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/github/fpga_project/Haze-Removal-Using-Dark-Channel-Prior-Based-On-FPGA/1.RTL/tb/haze_removal_tb.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module haze_removal_tb
