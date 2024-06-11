@@ -26,7 +26,7 @@
 > |      ***4.Vivado_Project***       | #工程及波形文件（当前版本**Vivado2023.2**，仅供参考，建议自行创建工程） |
 > |         ***5.QuestaSim***         | #存放Modelsim/QuestaSim的工程（为空，需自己创建工程至此目录） |
 
-注：请把Modelsim工程创建到Questasim文件夹，添加RTL文件下所有源文件，选择顶层***haze_removal_tb.sv***进行仿真，工程需仿真***14ms***才能出现结果。
+注：请把Modelsim工程创建到Questasim文件夹，添加RTL文件下所有源文件，选择顶层***haze_removal_tb.sv***进行仿真，仿真完会自动暂停的。
 
 ​	其中***验证工程***如下:
 
